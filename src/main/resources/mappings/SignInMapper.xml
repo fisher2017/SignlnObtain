@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baixiangfood.mapper.SignInMapper" >
+  <resultMap id="BaseResultMap" type="com.baixiangfood.model.SignIn" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="openId" property="openid" jdbcType="CHAR" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="bssid" property="bssid" jdbcType="CHAR" />
+    <result column="ssid" property="ssid" jdbcType="VARCHAR" />
+    <result column="day" property="day" jdbcType="CHAR" />
+    <result column="positionResult" property="positionresult" jdbcType="CHAR" />
+    <result column="department" property="department" jdbcType="VARCHAR" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="photoId" property="photoid" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="approveId" property="approveid" jdbcType="VARCHAR" />
+    <result column="approveUserOpenId" property="approveuseropenid" jdbcType="VARCHAR" />
+    <result column="approveTime" property="approvetime" jdbcType="TIMESTAMP" />
+    <result column="approveStatus" property="approvestatus" jdbcType="CHAR" />
+    <result column="approveType" property="approvetype" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, openId, time, position, bssid, ssid, day, positionResult, department, userName, 
+    photoId, remark, approveId, approveUserOpenId, approveTime, approveStatus, approveType
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_signin
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_signin
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.baixiangfood.model.SignIn" >
+    insert into t_signin (id, openId, time, 
+      position, bssid, ssid, 
+      day, positionResult, department, 
+      userName, photoId, remark, 
+      approveId, approveUserOpenId, approveTime, 
+      approveStatus, approveType)
+    values (#{id,jdbcType=BIGINT}, #{openid,jdbcType=CHAR}, #{time,jdbcType=TIMESTAMP}, 
+      #{position,jdbcType=VARCHAR}, #{bssid,jdbcType=CHAR}, #{ssid,jdbcType=VARCHAR}, 
+      #{day,jdbcType=CHAR}, #{positionresult,jdbcType=CHAR}, #{department,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{photoid,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{approveid,jdbcType=VARCHAR}, #{approveuseropenid,jdbcType=VARCHAR}, #{approvetime,jdbcType=TIMESTAMP}, 
+      #{approvestatus,jdbcType=CHAR}, #{approvetype,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.baixiangfood.model.SignIn" >
+    insert into t_signin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="openid != null" >
+        openId,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="bssid != null" >
+        bssid,
+      </if>
+      <if test="ssid != null" >
+        ssid,
+      </if>
+      <if test="day != null" >
+        day,
+      </if>
+      <if test="positionresult != null" >
+        positionResult,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="photoid != null" >
+        photoId,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="approveid != null" >
+        approveId,
+      </if>
+      <if test="approveuseropenid != null" >
+        approveUserOpenId,
+      </if>
+      <if test="approvetime != null" >
+        approveTime,
+      </if>
+      <if test="approvestatus != null" >
+        approveStatus,
+      </if>
+      <if test="approvetype != null" >
+        approveType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=CHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="bssid != null" >
+        #{bssid,jdbcType=CHAR},
+      </if>
+      <if test="ssid != null" >
+        #{ssid,jdbcType=VARCHAR},
+      </if>
+      <if test="day != null" >
+        #{day,jdbcType=CHAR},
+      </if>
+      <if test="positionresult != null" >
+        #{positionresult,jdbcType=CHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="photoid != null" >
+        #{photoid,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="approveid != null" >
+        #{approveid,jdbcType=VARCHAR},
+      </if>
+      <if test="approveuseropenid != null" >
+        #{approveuseropenid,jdbcType=VARCHAR},
+      </if>
+      <if test="approvetime != null" >
+        #{approvetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approvestatus != null" >
+        #{approvestatus,jdbcType=CHAR},
+      </if>
+      <if test="approvetype != null" >
+        #{approvetype,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baixiangfood.model.SignIn" >
+    update t_signin
+    <set >
+      <if test="openid != null" >
+        openId = #{openid,jdbcType=CHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="bssid != null" >
+        bssid = #{bssid,jdbcType=CHAR},
+      </if>
+      <if test="ssid != null" >
+        ssid = #{ssid,jdbcType=VARCHAR},
+      </if>
+      <if test="day != null" >
+        day = #{day,jdbcType=CHAR},
+      </if>
+      <if test="positionresult != null" >
+        positionResult = #{positionresult,jdbcType=CHAR},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="photoid != null" >
+        photoId = #{photoid,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="approveid != null" >
+        approveId = #{approveid,jdbcType=VARCHAR},
+      </if>
+      <if test="approveuseropenid != null" >
+        approveUserOpenId = #{approveuseropenid,jdbcType=VARCHAR},
+      </if>
+      <if test="approvetime != null" >
+        approveTime = #{approvetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approvestatus != null" >
+        approveStatus = #{approvestatus,jdbcType=CHAR},
+      </if>
+      <if test="approvetype != null" >
+        approveType = #{approvetype,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baixiangfood.model.SignIn" >
+    update t_signin
+    set openId = #{openid,jdbcType=CHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      position = #{position,jdbcType=VARCHAR},
+      bssid = #{bssid,jdbcType=CHAR},
+      ssid = #{ssid,jdbcType=VARCHAR},
+      day = #{day,jdbcType=CHAR},
+      positionResult = #{positionresult,jdbcType=CHAR},
+      department = #{department,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR},
+      photoId = #{photoid,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      approveId = #{approveid,jdbcType=VARCHAR},
+      approveUserOpenId = #{approveuseropenid,jdbcType=VARCHAR},
+      approveTime = #{approvetime,jdbcType=TIMESTAMP},
+      approveStatus = #{approvestatus,jdbcType=CHAR},
+      approveType = #{approvetype,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectListByDay" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from t_signin
+    where  `time` &gt; '${dayString} 00:00:00' AND `time` &lt; '${dayString} 23:59:59'
+  </select>
+
+
+</mapper>
